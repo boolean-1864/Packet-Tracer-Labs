@@ -1,0 +1,32 @@
+Switch(config)#interface fastEthernet0/1
+Switch(config-if)#dup
+Switch(config-if)#duplex full
+Switch(config-if)#spee
+Switch(config-if)#speed 100
+Switch(config-if)#end
+Switch#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Switch#copy runn
+Switch#copy running-config start
+Switch#copy running-config startup-config
+Switch#show running-config 
+Building configuration...
+hostname Switch
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ duplex full
+ speed 100
+!
+!
+!
+!
+end
