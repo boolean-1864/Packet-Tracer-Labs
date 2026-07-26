@@ -1,0 +1,39 @@
+/* This command are used to configur SSH for remote Management.
+ I used all information Below is from CCNA: Switching, Routing, and Wireless Essentials course */
+
+Step 1: show ip shh ===> if this command is not recognaized --> our switch IOS is not support cryptographic features. 
+So, using "show version" command in privilged mode  you can check the switch cryptographic features (K9) or Not.
+
+step 2: ip domain-name cisco.com
+
+To configure SSH version 2, issue the "ip ssh version 2"  in global configuration Mode.
+
+next Generate RSA key pairs on Global configuration mode
+
+step 3: crypto key generate rsa
+
+when you run this command you are prompted to Enter a Modules length (example you 1024)
+A longer modulus length is more secure, but it takes longer to generate and to use.
+
+Note: To delete the RSA key pair, use the crypto key zeroize rsa global configuration mode command. 
+After the RSA key pair is deleted, the SSH server is automatically disabled.
+
+Setp 4: 
+Configure user authentication. 
+To done that just create username and password,
+then configure the command below on Global configuration mode (admin is username and ccna is password).
+
+username admin secrate ccna 
+
+Step 5
+Configure the vty lines using the following command on Golbal configuraion mode
+
+line vty 0 15
+transport input ssh
+login local
+exit
+
+This configuration prevents non-SSH (such as Telnet) connections and limits the switch to accept only SSH connections.
+login local line configuration mode command to require local authentication for ssh connection from the local userneme database.
+
+
